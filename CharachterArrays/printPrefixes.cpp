@@ -5,7 +5,6 @@ using namespace std;
 int main()
 {
     char str1[] = "abcd";
-
     for (int e = 0; e < strlen(str1); e++)
     {
         for (int s = 0; s <= e; s++)
@@ -14,6 +13,5 @@ int main()
         }
         cout << endl;
     }
-
     return 0;
 }

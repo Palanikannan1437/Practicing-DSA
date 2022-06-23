@@ -76,9 +76,59 @@ Node *takeInputFromHead()
     return head;
 }
 
+int lenghtOfLinkedList(Node *head)
+{
+    Node *temp = head;
+    int length = 0;
+
+    while (temp != NULL)
+    {
+        length++;
+        temp = temp->next;
+    }
+    return length;
+}
+
+Node *printIthNode(Node *head, int index)
+{
+
+    // if (index < 0 || index > lenghtOfLinkedList(head) - 1)//using length is O(n) complexity
+    // {
+    //     return NULL;
+    // }
+
+    if (index < 0)
+    {
+        return NULL;
+    }
+
+    Node *temp = head;
+    for (int i = 0; i < index && temp != NULL; i++)
+    {
+        temp = temp->next;
+    }
+
+    if (temp)
+    {
+        return temp;
+    }
+    else
+    {
+        cout << "Index jyaade" << endl;
+        return NULL;
+    }
+}
+
 int main()
 {
     Node *head = takeInput();
     printLinkedList(head);
+
+    Node *nodeIth = printIthNode(head, 4);
+    if (nodeIth)
+    {
+        cout << endl
+             << nodeIth->data << endl;
+    }
     return 0;
 }

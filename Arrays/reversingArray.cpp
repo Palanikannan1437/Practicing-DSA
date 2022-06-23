@@ -2,13 +2,13 @@
 
 using namespace std;
 
-void reverseArray(int a[], int n)
+void reverseArray(int *arr, int n)
 {
     int s = 0;
     int e = n - 1;
     while (s < e)
     {
-        swap(a[s], a[e]);
+        swap(arr[s], arr[e]);
         s++;
         e--;
     }
@@ -16,20 +16,20 @@ void reverseArray(int a[], int n)
 
 int *takeArrayInput(int n)
 {
-    int *a = new int[n];
+    int *arr = new int[n];
     for (int i = 0; i < n; i++)
     {
         cout << "Enter " << i << " th element: ";
-        cin >> a[i];
+        cin >> arr[i];
     }
-    return a;
+    return arr;
 }
 
-void printArray(int a[], int n)
+void printArray(int *arr, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        cout << a[i] << " ";
+        cout << arr[i] << " ";
     }
 }
 
