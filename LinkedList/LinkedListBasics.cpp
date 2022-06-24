@@ -91,7 +91,6 @@ int lenghtOfLinkedList(Node *head)
 
 Node *printIthNode(Node *head, int index)
 {
-
     // if (index < 0 || index > lenghtOfLinkedList(head) - 1)//using length is O(n) complexity
     // {
     //     return NULL;
@@ -119,16 +118,85 @@ Node *printIthNode(Node *head, int index)
     }
 }
 
+Node *insertAtIthPosition(Node *head, int data, int index)
+{
+    Node *temp = head;
+
+    // index is -ve
+    if (index < 0)
+    {
+        return head;
+    }
+
+    // index is 0
+    if (index == 0)
+    {
+        Node *n = new Node(data);
+        n->next = head;
+        head = n;
+        return head;
+    }
+
+    // insert at ith position
+    for (int i = 0; i < index - 1 && temp != NULL; i++)
+    {
+        temp = temp->next;
+    }
+    if (temp)
+    {
+        Node *n = new Node(data);
+        n->next = temp->next;
+        temp->next = n;
+        return head;
+    }
+    return head;
+}
+
+Node *deleteAtIthPosition(Node *head, int index)
+{
+    if (index < 0)
+    {
+        return head;
+    }
+
+    if (index == 0)
+    {
+        Node *copyHead = head->next;
+        head->next = NULL; // isolation of head node
+        delete head;       // deallocate from memory
+        return copyHead;
+    }
+
+    Node *temp = head;
+    for (int i = 0; i < index - 1 && temp; i++)
+    {
+        temp = temp->next;
+    }
+
+    // we add temp->next condition for greater than valid index cases
+    if (temp && temp->next)
+    {
+        Node *deleteNode = temp->next;
+        temp->next = temp->next->next;
+        deleteNode->next = NULL; // isolate node to be deleted
+        delete deleteNode;       // de allocate the memory
+        return head;
+    }
+    return head;
+}
+
 int main()
 {
     Node *head = takeInput();
     printLinkedList(head);
-
-    Node *nodeIth = printIthNode(head, 4);
-    if (nodeIth)
-    {
-        cout << endl
-             << nodeIth->data << endl;
-    }
+    cout << endl;
+    Node *newHead = deleteAtIthPosition(head, 2);
+    printLinkedList(newHead);
+    // Node *nodeIth = printIthNode(head, 4);
+    // if (nodeIth)
+    // {
+    //     cout << endl
+    //          << nodeIth->data << endl;
+    // }
     return 0;
 }
