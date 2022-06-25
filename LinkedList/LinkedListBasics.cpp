@@ -10,7 +10,7 @@ public:
     Node(int data)
     {
         this->data = data;
-        next = NULL;
+        this->next = NULL;
     }
 };
 
