@@ -24,18 +24,6 @@ void printNumbersDescending(int n)
     printNumbersDescending(n - 1);
 }
 
-int numberOfDigits(int n)
-{
-    int count = 0;
-
-    while (n > 0)
-    {
-        n = n / 10;
-        count++;
-    }
-    return count;
-}
-
 int numberOfDigitsRecursive(int n)
 {
     if (n == 0)
@@ -48,8 +36,32 @@ int numberOfDigitsRecursive(int n)
     return 1 + smallAns;
 }
 
+int sumOfDigitsRecursive(int n)
+{
+    if (n == 0)
+    {
+        return 0;
+    }
+
+    int smallAns = sumOfDigitsRecursive(n / 10);
+
+    return smallAns + n % 10;
+}
+
 int main()
 {
-    cout << numberOfDigitsRecursive(2353332);
+    cout << sumOfDigitsRecursive(1234);
     return 0;
 }
+
+// int numberOfDigits(int n)
+// {
+//     int count = 0;
+
+//     while (n > 0)
+//     {
+//         n = n / 10;
+//         count++;
+//     }
+//     return count;
+// }
