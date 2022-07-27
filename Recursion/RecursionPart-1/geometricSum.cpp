@@ -12,7 +12,7 @@ double geometricSumRecursive(int m, int k)
 
     double smallAns = geometricSumRecursive(m, k - 1);
 
-    // 1/2^0 + 1/2^
+    // gp = 1/2^0 + 1/2^1 + ....+ 1/2^(k-1) + 1/2^k
     return smallAns + (1.0 / pow(m, k));
 }
 
