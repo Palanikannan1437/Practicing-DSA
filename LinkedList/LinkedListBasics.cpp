@@ -190,7 +190,7 @@ int main()
     Node *head = takeInput();
     printLinkedList(head);
     cout << endl;
-    Node *newHead = deleteAtIthPosition(head, 2);
+    Node *newHead = insertAtIthPosition1(head, 100, 0);
     printLinkedList(newHead);
     // Node *nodeIth = printIthNode(head, 4);
     // if (nodeIth)
